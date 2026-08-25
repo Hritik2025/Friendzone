@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FriendZone Games 🎮</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #111827, #312e81, #581c87);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 25px;
+      padding: 25px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 34px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      opacity: .75;
+      margin-bottom: 25px;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 12px;
+      outline: none;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      background: #8b5cf6;
+      color: white;
+    }
+
+    button:active {
+      transform: scale(.98);
+    }
+
+    .secondary {
+      background: rgba(255,255,255,.15);
+    }
+
+    .danger {
+      background: #ef4444;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .room-code {
+      font-size: 38px;
+      text-align: center;
+      letter-spacing: 8px;
+      margin: 15px 0;
+      font-weight: bold;
+      color: #c4b5fd;
+    }
+
+    .players {
+      margin-top: 20px;
+    }
+
+    .player {
+      background: rgba(255,255,255,.1);
+      padding: 12px;
+      border-radius: 10px;
+      margin: 7px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .status {
+      text-align: center;
+      margin: 15px 0;
+      color: #ddd6fe;
+    }
+
+    .game-area {
+      text-align: center;
+    }
+
+    #tapButton {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      font-size: 30px;
+      margin: 30px auto;
+      background: #ec4899;
+      box-shadow: 0 10px 30px rgba(236,72,153,.4);
+    }
+
+    .score {
+      font-size: 25px;
+      margin: 15px;
+    }
+
+    .message {
+      text-align: center;
+      min-height: 25px;
+      margin-top: 12px;
+      color: #fde68a;
+    }
+
+    .small {
+      font-size: 13px;
+      opacity: .65;
+      text-align: center;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- HOME -->
+  <div id="home" class="card">
+
+    <h1>🎮 FriendZone</h1>
+    <p class="subtitle">Play games with your friends</p>
+
+    <input
+      id="nameInput"
+      type="text"
+      maxlength="20"
+      placeholder="Enter your name"
+    >
+
+    <button onclick="createRoom()">
+      ➕ Create Room
+    </button>
+
+    <button class="secondary" onclick="showJoin()">
+      🔑 Join Room
+    </button>
+
+    <div id="joinBox" class="hidden">
+
+      <input
+        id="roomInput"
+        type="text"
+        maxlength="6"
+        placeholder="Enter room code"
+        inputmode="numeric"
+      >
+
+      <button onclick="joinRoom()">
+        🚀 Join Game
+      </button>
+
+    </div>
+
+    <p id="homeMessage" class="message"></p>
+
+    <p class="small">
+      Multiplayer powered by Firebase
+    </p>
+
+  </div>
+
+
+  <!-- LOBBY -->
+  <div id="lobby" class="card hidden">
+
+    <h1>🎮 Game Lobby</h1>
+
+    <p class="subtitle">
+      Share this code with your friends
+    </p>
+
+    <div id="roomCode" class="room-code">
+      ------
+    </div>
+
+    <button class="secondary" onclick="copyRoomCode()">
+      📋 Copy Room Code
+    </button>
+
+    <div class="players">
+
+      <h3>👥 Players</h3>
+
+      <div id="playerList"></div>
+
+    </div>
+
+    <p id="lobbyStatus" class="status">
+      Waiting for players...
+    </p>
+
+    <button onclick="startGame()">
+      🎮 Start Game
+    </button>
+
+    <button class="danger" onclick="leaveRoom()">
+      Leave Room
+    </button>
+
+  </div>
+
+
+  <!-- GAME -->
+  <div id="game" class="card hidden">
+
+    <h1>⚡ Quick Tap</h1>
+
+    <p class="subtitle">
+      Tap as fast as you can!
+    </p>
+
+    <div class="score">
+      Your Score: <b id="myScore">0</b>
+    </div>
+
+    <button id="tapButton" onclick="tapGame()">
+      TAP!
+    </button>
+
+    <div id="gameMessage" class="message">
+      Game started!
+    </div>
+
+    <div class="players">
+
+      <h3>🏆 Live Scores</h3>
+
+      <div id="scoreList"></div>
+
+    </div>
+
+    <button class="danger" onclick="leaveRoom()">
+      Exit Game
+    </button>
+
+  </div>
+
+</div>
+
+
+<script type="module">
+
+  import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+  import {
+    getDatabase,
+    ref,
+    set,
+    get,
+    update,
+    onValue,
+    remove
+  } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
+
+
+  // ==========================================
+  // FIREBASE CONFIGURATION
+  // ==========================================
+
+  const firebaseConfig = {
+
+    apiKey: "AIzaSyDjpVMXYbf_Wqj0gQsGL55fLhzFigFoIlM",
+
+    authDomain: "friendzone-games.firebaseapp.com",
+
+    databaseURL:
+      "https://friendzone-games-default-rtdb.firebaseio.com",
+
+    projectId: "friendzone-games",
+
+    storageBucket:
+      "friendzone-games.firebasestorage.app",
+
+    messagingSenderId: "525865168387",
+
+    appId:
+      "1:525865168387:web:70cfcba515e9331868a836",
+
+    measurementId: "G-Q5Q3PM89NL"
+
+  };
+
+
+  // ==========================================
+  // INITIALIZE FIREBASE
+  // ==========================================
+
+  const app = initializeApp(firebaseConfig);
+
+  const db = getDatabase(app);
+
+
+  // ==========================================
+  // VARIABLES
+  // ==========================================
+
+  let currentRoom = null;
+  let playerId = null;
+  let playerName = null;
+  let isHost = false;
+
+  let currentScore = 0;
+
+  let roomListener = null;
+
+
+  // ==========================================
+  // GENERATE PLAYER ID
+  // ==========================================
+
+  function generatePlayerId() {
+
+    return "player_" +
+      Date.now() +
+      "_" +
+      Math.random()
+        .toString(36)
+        .substring(2, 8);
+
+  }
+
+
+  // ==========================================
+  // SCREEN FUNCTIONS
+  // ==========================================
+
+  function showScreen(screen) {
+
+    document
+      .getElementById("home")
+      .classList.add("hidden");
+
+    document
+      .getElementById("lobby")
+      .classList.add("hidden");
+
+    document
+      .getElementById("game")
+      .classList.add("hidden");
+
+    document
+      .getElementById(screen)
+      .classList.remove("hidden");
+
+  }
+
+
+  // ==========================================
+  // SHOW JOIN
+  // ==========================================
+
+  window.showJoin = function() {
+
+    document
+      .getElementById("joinBox")
+      .classList.remove("hidden");
+
+  };
+
+
+  // ==========================================
+  // CREATE ROOM
+  // ==========================================
+
+  window.createRoom = async function() {
+
+    playerName =
+      document
+        .getElementById("nameInput")
+        .value
+        .trim();
+
+    if (!playerName) {
+
+      showHomeMessage("Please enter your name.");
+
+      return;
+
+    }
+
+
+    playerId = generatePlayerId();
+
+    currentRoom =
+      Math.floor(
+        100000 +
+        Math.random() * 900000
+      ).toString();
+
+    isHost = true;
+
+
+    const roomRef =
+      ref(db, "rooms/" + currentRoom);
+
+
+    try {
+
+      await set(roomRef, {
+
+        host: playerId,
+
+        status: "waiting",
+
+        createdAt: Date.now(),
+
+        players: {
+
+          [playerId]: {
+
+            name: playerName,
+
+            score: 0,
+
+            joinedAt: Date.now()
+
+          }
+
+        }
+
+      });
+
+
+      enterLobby();
+
+    } catch (error) {
+
+      console.error(error);
+
+      showHomeMessage(
+        "Could not create room: " +
+        error.message
+      );
+
+    }
+
+  };
+
+
+  // ==========================================
+  // JOIN ROOM
+  // ==========================================
+
+  window.joinRoom = async function() {
+
+    playerName =
+      document
+        .getElementById("nameInput")
+        .value
+        .trim();
+
+    const roomCode =
+      document
+        .getElementById("roomInput")
+        .value
+        .trim();
+
+
+    if (!playerName) {
+
+      showHomeMessage("Enter your name first.");
+
+      return;
+
+    }
+
+
+    if (roomCode.length !== 6) {
+
+      showHomeMessage("Enter a valid 6-digit room code.");
+
+      return;
+
+    }
+
+
+    try {
+
+      const roomRef =
+        ref(db, "rooms/" + roomCode);
+
+      const snapshot =
+        await get(roomRef);
+
+
+      if (!snapshot.exists()) {
+
+        showHomeMessage("Room not found.");
+
+        return;
+
+      }
+
+
+      const room =
+        snapshot.val();
+
+
+      if (room.status === "playing") {
+
+        showHomeMessage(
+          "Game has already started."
+        );
+
+        return;
+
+      }
+
+
+      playerId = generatePlayerId();
+
+      currentRoom = roomCode;
+
+      isHost = false;
+
+
+      const playerRef =
+        ref(
+          db,
+          "rooms/" +
+          currentRoom +
+          "/players/" +
+          playerId
+        );
+
+
+      await set(playerRef, {
+
+        name: playerName,
+
+        score: 0,
+
+        joinedAt: Date.now()
+
+      });
+
+
+      enterLobby();
+
+    } catch (error) {
+
+      console.error(error);
+
+      showHomeMessage(
+        "Could not join room: " +
+        error.message
+      );
+
+    }
+
+  };
+
+
+  // ==========================================
+  // ENTER LOBBY
+  // ==========================================
+
+  function enterLobby() {
+
+    showScreen("lobby");
+
+    document
+      .getElementById("roomCode")
+      .textContent = currentRoom;
+
+
+    listenToRoom();
+
+  }
+
+
+  // ==========================================
+  // LISTEN TO ROOM
+  // ==========================================
+
+  function listenToRoom() {
+
+    const roomRef =
+      ref(db, "rooms/" + currentRoom);
+
+
+    roomListener =
+      onValue(roomRef, (snapshot) => {
+
+        if (!snapshot.exists()) {
+
+          alert("Room closed.");
+
+          location.reload();
+
+          return;
+
+        }
+
+
+        const room =
+          snapshot.val();
+
+
+        updatePlayerList(room);
+
+
+        if (room.status === "playing") {
+
+          showScreen("game");
+
+          updateScores(room);
+
+        }
+
+      });
+
+  }
+
+
+  // ==========================================
+  // UPDATE PLAYER LIST
+  // ==========================================
+
+  function updatePlayerList(room) {
+
+    const list =
+      document.getElementById("playerList");
+
+    list.innerHTML = "";
+
+
+    const players =
+      room.players || {};
+
+
+    Object.keys(players).forEach(id => {
+
+      const player =
+        players[id];
+
+
+      const div =
+        document.createElement("div");
+
+      div.className = "player";
+
+
+      const hostText =
+        id === room.host
+          ? " 👑"
+          : "";
+
+
+      div.innerHTML = `
+        <span>${escapeHTML(player.name)}${hostText}</span>
+        <span>${player.score || 0}</span>
+      `;
+
+
+      list.appendChild(div);
+
+    });
+
+
+    const count =
+      Object.keys(players).length;
+
+
+    document
+      .getElementById("lobbyStatus")
+      .textContent =
+      count < 2
+        ? "Waiting for another player..."
+        : count + " players ready!";
+
+  }
+
+
+  // ==========================================
+  // START GAME
+  // ==========================================
+
+  window.startGame = async function() {
+
+    if (!isHost) {
+
+      alert("Only the host can start the game.");
+
+      return;
+
+    }
+
+
+    try {
+
+      await update(
+        ref(db, "rooms/" + currentRoom),
+        {
+          status: "playing",
+          startedAt: Date.now()
+        }
+      );
+
+    } catch (error) {
+
+      alert(
+        "Could not start game: " +
+        error.message
+      );
+
+    }
+
+  };
+
+
+  // ==========================================
+  // TAP GAME
+  // ==========================================
+
+  window.tapGame = async function() {
+
+    currentScore++;
+
+
+    document
+      .getElementById("myScore")
+      .textContent = currentScore;
+
+
+    try {
+
+      await update(
+
+        ref(
+          db,
+          "rooms/" +
+          currentRoom +
+          "/players/" +
+          playerId
+        ),
+
+        {
+          score: currentScore
+        }
+
+      );
+
+    } catch (error) {
+
+      console.error(error);
+
+    }
+
+  };
+
+
+  // ==========================================
+  // UPDATE SCORES
+  // ==========================================
+
+  function updateScores(room) {
+
+    const list =
+      document.getElementById("scoreList");
+
+    list.innerHTML = "";
+
+
+    const players =
+      room.players || {};
+
+
+    const sorted =
+      Object.entries(players)
+        .sort(
+          (a, b) =>
+            (b[1].score || 0) -
+            (a[1].score || 0)
+        );
+
+
+    sorted.forEach(([id, player], index) => {
+
+      const div =
+        document.createElement("div");
+
+      div.className = "player";
+
+
+      let medal = "";
+
+      if (index === 0) medal = "🥇";
+
+      else if (index === 1) medal = "🥈";
+
+      else if (index === 2) medal = "🥉";
+
+
+      div.innerHTML = `
+        <span>
+          ${medal} ${escapeHTML(player.name)}
+        </span>
+
+        <strong>
+          ${player.score || 0}
+        </strong>
+      `;
+
+
+      list.appendChild(div);
+
+    });
+
+
+    const me =
+      players[playerId];
+
+
+    if (me) {
+
+      currentScore =
+        me.score || 0;
+
+      document
+        .getElementById("myScore")
+        .textContent =
+        currentScore;
+
+    }
+
+  }
+
+
+  // ==========================================
+  // COPY ROOM CODE
+  // ==========================================
+
+  window.copyRoomCode = async function() {
+
+    try {
+
+      await navigator.clipboard.writeText(
+        currentRoom
+      );
+
+      document
+        .getElementById("lobbyStatus")
+        .textContent =
+        "✅ Room code copied!";
+
+    } catch {
+
+      alert(
+        "Your room code is: " +
+        currentRoom
+      );
+
+    }
+
+  };
+
+
+  // ==========================================
+  // LEAVE ROOM
+  // ==========================================
+
+  window.leaveRoom = async function() {
+
+    if (!currentRoom || !playerId) {
+
+      location.reload();
+
+      return;
+
+    }
+
+
+    try {
+
+      if (isHost) {
+
+        await remove(
+          ref(
+            db,
+            "rooms/" +
+            currentRoom
+          )
+        );
+
+      } else {
+
+        await remove(
+          ref(
+            db,
+            "rooms/" +
+            currentRoom +
+            "/players/" +
+            playerId
+          )
+        );
+
+      }
+
+    } catch (error) {
+
+      console.error(error);
+
+    }
+
+
+    location.reload();
+
+  };
+
+
+  // ==========================================
+  // HOME MESSAGE
+  // ==========================================
+
+  function showHomeMessage(message) {
+
+    document
+      .getElementById("homeMessage")
+      .textContent = message;
+
+  }
+
+
+  // ==========================================
+  // BASIC HTML ESCAPE
+  // ==========================================
+
+  function escapeHTML(text) {
+
+    const div =
+      document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+  }
+
+
+  // ==========================================
+  // FIREBASE READY
+  // ==========================================
+
+  console.log(
+    "🔥 FriendZone Firebase connected!"
+  );
+
+</script>
+
+</body>
+  </html>
