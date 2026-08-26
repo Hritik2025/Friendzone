@@ -1,182 +1,92 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>FriendZone Games</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Siddhi 💜</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#0b1020;color:#fff;min-height:100vh}
-.wrap{max-width:900px;margin:auto;padding:22px}.card{background:#151c33;border:1px solid #293452;border-radius:22px;padding:22px;box-shadow:0 15px 50px #0005}
-h1{font-size:38px;margin:0 0 8px}h2{margin-top:0}.muted{color:#aab4d0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
-button,input{width:100%;border:0;border-radius:14px;padding:14px;font-size:16px}button{background:#6d5dfc;color:#fff;font-weight:700;cursor:pointer}button.secondary{background:#26314f}button.danger{background:#c0395b}
-input{background:#0e1528;color:#fff;border:1px solid #34415f}button:disabled{opacity:.45;cursor:not-allowed}.screen{display:none}.screen.active{display:block}
-.top{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.pill{background:#26314f;padding:8px 12px;border-radius:999px}
-.players{display:flex;flex-wrap:wrap;gap:8px}.player{padding:10px 12px;background:#202a46;border-radius:12px}.host{outline:2px solid #6d5dfc}
-.option{margin:8px 0;text-align:left}.timer{font-size:42px;font-weight:800;text-align:center}.score{font-size:20px;font-weight:800}.notice{padding:12px;border-radius:12px;background:#202a46;margin:12px 0}.hidden{display:none!important}
-.small{font-size:13px}.code{font-size:34px;letter-spacing:8px;font-weight:900;text-align:center}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#faf5ff,#fff1f7);color:#26324a}
+.app{min-height:100vh}.top{padding:18px 20px;background:#fff8ff;border-bottom:1px solid #eadcff;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5}.logo{font-size:25px;font-weight:800;color:#7139d8}.music{background:#fff;border:1px solid #dec8ff;padding:10px 14px;border-radius:15px;font-size:13px}
+.wrap{display:flex;max-width:1200px;margin:auto}.side{width:210px;padding:20px 14px;border-right:1px solid #eadcff;min-height:calc(100vh - 70px)}.nav{padding:12px;border-radius:12px;margin:5px 0;cursor:pointer}.nav:hover,.nav.active{background:#f0e4ff;color:#7035d3;font-weight:bold}
+main{flex:1;padding:25px}.hero{background:white;border:1px solid #eadcff;border-radius:24px;padding:28px;display:flex;justify-content:space-between;gap:20px;box-shadow:0 10px 30px #7b45b31a}.hero h1{font-size:36px;margin:8px 0;color:#26324a}.hero p{color:#667085;line-height:1.6}.bear{font-size:100px;align-self:center}.btn{border:0;border-radius:13px;padding:12px 18px;background:#7639dc;color:white;font-weight:bold;cursor:pointer}.btn:active{transform:scale(.97)}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px}.card{background:white;border:1px solid #eadcff;border-radius:18px;padding:18px;text-align:center;min-height:150px}.emoji{font-size:35px}.card h3{font-size:15px;margin:8px 0}.small{font-size:12px;color:#7b8498}.play{margin-top:10px;border:0;border-radius:10px;padding:8px 14px;color:white;background:#8b4de2;cursor:pointer}
+.section{margin-top:22px}.section h2{font-size:20px}.letters{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.letter{padding:22px 10px;border-radius:18px;text-align:center;background:#fff;border:1px solid #efd7e8;cursor:pointer}.letter:hover{transform:translateY(-3px)}
+.kit{display:flex;gap:10px;flex-wrap:wrap}.pill{background:#fff;padding:13px 16px;border-radius:16px;border:1px solid #dcefe6;cursor:pointer}.spam{background:#fff5d9;border:1px solid #f4dc94;padding:20px;border-radius:18px;margin-top:18px;text-align:center}.message{margin-top:18px;background:#f5efff;border-radius:18px;padding:18px;display:none}
+.modal{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;padding:20px;z-index:20}.box{background:white;border-radius:22px;padding:25px;max-width:430px;width:100%;text-align:center}.close{float:right;border:0;background:#eee;border-radius:50%;width:30px;height:30px}
+@media(max-width:850px){.side{display:none}.grid{grid-template-columns:repeat(2,1fr)}.letters{grid-template-columns:repeat(2,1fr)}main{padding:15px}.hero h1{font-size:28px}.bear{font-size:65px}.music{display:none}}
 </style>
 </head>
 <body>
+<div class="app">
+<header class="top"><div class="logo">For Siddhi 💜</div><div class="music">🎵 Good Days &nbsp; • &nbsp; ♫</div></header>
 <div class="wrap">
-<section id="home" class="screen active card">
-<h1>🎮 FriendZone</h1><p class="muted">Quick multiplayer games for your friend group.</p>
+<aside class="side">
+<div class="nav active">🏠 Home</div><div class="nav">🎮 Games</div><div class="nav">❓ Quizzes</div><div class="nav">💌 Messages</div><div class="nav">🎵 Playlist</div><div class="nav">🧸 Virtual Kit</div><div class="nav">🎨 Draw Together</div><div class="nav">💜 Our Moments</div>
+</aside>
+<main>
+<section class="hero">
+<div><div style="color:#7b3fd2;font-weight:bold">Hey Siddhi! 🌸</div><h1>You're stronger<br>than you think.</h1><p>This is your tiny internet corner for whenever the hospital gets boring. 😌<br>Play something, open a surprise, or just press the chaos button.</p><button class="btn" onclick="surprise()">✨ Give Me A Surprise</button></div><div class="bear">🧸💗</div>
+</section>
+
+<div class="section"><h2>🎮 Let's Beat Boredom</h2>
 <div class="grid">
-<div><h3>Create a room</h3><input id="createName" maxlength="18" placeholder="Your nickname"><br><br><button onclick="createRoom()">Create Room</button></div>
-<div><h3>Join a room</h3><input id="joinName" maxlength="18" placeholder="Your nickname"><br><br><input id="roomInput" maxlength="6" placeholder="ROOM CODE" style="text-transform:uppercase"><br><br><button onclick="joinRoom()">Join Room</button></div>
-</div><p id="homeMsg" class="muted"></p>
-</section>
-
-<section id="lobby" class="screen card">
-<div class="top"><div><h2>🎮 Lobby</h2><div class="muted">Room code</div><div id="roomCode" class="code"></div></div><button class="secondary" onclick="copyCode()">Copy code</button></div>
-<hr>
-<h3>Players</h3><div id="players" class="players"></div>
-<div id="hostControls" class="hidden"><h3>Choose a game</h3><div class="grid">
-<button onclick="startGame('quiz')">🧠 Quiz Battle</button>
-<button onclick="startGame('most')">😂 Most Likely To</button>
-<button onclick="startGame('wyr')">🤔 Would You Rather</button>
-<button onclick="startGame('fast')">⚡ Fastest Finger</button>
+<div class="card"><div class="emoji">🎯</div><h3>Truth or Dare</h3><div class="small">Fun questions</div><button class="play" onclick="game('truth')">Play</button></div>
+<div class="card"><div class="emoji">🤔</div><h3>Would You Rather</h3><div class="small">Impossible choices</div><button class="play" onclick="game('wyr')">Play</button></div>
+<div class="card"><div class="emoji">🔢</div><h3>Guess My Number</h3><div class="small">1–20 challenge</div><button class="play" onclick="game('number')">Play</button></div>
+<div class="card"><div class="emoji">🎬</div><h3>Movie Emoji</h3><div class="small">Guess the movie</div><button class="play" onclick="game('movie')">Play</button></div>
+<div class="card"><div class="emoji">😂</div><h3>Random Chaos</h3><div class="small">Zero seriousness</div><button class="play" onclick="game('chaos')">Play</button></div>
 </div></div>
-<div id="waiting" class="notice">Waiting for the host to start a game…</div>
-</section>
 
-<section id="game" class="screen card">
-<div class="top"><div class="pill" id="gameTitle"></div><div class="pill">Score: <span id="myScore">0</span></div></div>
-<div id="gameBody"></div>
-</section>
+<div class="section"><h2>💌 Open When You're...</h2>
+<div class="letters">
+<div class="letter" onclick="openLetter('bored')">💜<br><b>Feeling Bored</b></div>
+<div class="letter" onclick="openLetter('sad')">💗<br><b>Feeling Sad</b></div>
+<div class="letter" onclick="openLetter('miss')">💙<br><b>Missing Us</b></div>
+<div class="letter" onclick="openLetter('mot')">💛<br><b>Need Motivation</b></div>
+<div class="letter" onclick="openLetter('sleep')">💚<br><b>Feeling Sleepy</b></div>
+</div></div>
 
-<section id="result" class="screen card">
-<h2>🏆 Round complete!</h2><div id="resultBody"></div><button onclick="backLobby()">Back to Lobby</button>
-</section>
-</div>
+<div class="section"><h2>🧸 Virtual Hospital Survival Kit</h2>
+<div class="kit">
+<div class="pill" onclick="toast('✨ Good vibes delivered!')">⭐ Good Vibes</div>
+<div class="pill" onclick="toast('😂 Laughter dose: 100%')">😂 Laughter</div>
+<div class="pill" onclick="toast('❤️ Healing energy sent!')">❤️ Healing</div>
+<div class="pill" onclick="toast('🫂 Bestie support activated!')">🫂 Bestie Support</div>
+<div class="pill" onclick="toast('🍩 Imaginary snack incoming!')">🍩 Yummy Thoughts</div>
+<div class="pill" onclick="toast('🧸 Virtual hug sent!')">🧸 Hugs</div>
+</div></div>
 
-<script type="module">
-import {initializeApp} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
-import {getDatabase,ref,set,update,onValue,get} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-database.js";
-import {getAuth,signInAnonymously,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+<div class="spam"><b>😂 Emergency Boredom Button</b><br><span class="small">Press only if you're ready for nonsense.</span><br><button class="btn" style="margin-top:10px;background:#f2a900" onclick="spam()">🚨 SPAM ME!</button></div>
+<div id="message" class="message"></div>
+</main></div></div>
 
-/* 1) Replace this object with your Firebase Web App config. */
-const firebaseConfig={
-  apiKey:"PASTE_API_KEY",
-  authDomain:"PASTE_PROJECT.firebaseapp.com",
-  databaseURL:"PASTE_DATABASE_URL",
-  projectId:"PASTE_PROJECT_ID",
-  storageBucket:"PASTE_PROJECT.firebasestorage.app",
-  messagingSenderId:"PASTE_SENDER_ID",
-  appId:"PASTE_APP_ID"
-};
+<div class="modal" id="modal"><div class="box"><button class="close" onclick="closeModal()">×</button><div id="modalText" style="padding:20px 5px;font-size:18px;line-height:1.5"></div></div></div>
 
-const app=initializeApp(firebaseConfig), db=getDatabase(app), auth=getAuth(app);
-let uid=null,room=null,myName="",isHost=false,roomData=null,unsubscribe=null,answered=false;
-
-const games={
-quiz:[
- {q:"Which planet is known as the Red Planet?",a:["Earth","Mars","Jupiter","Venus"],c:1},
- {q:"How many sides does a hexagon have?",a:["5","6","7","8"],c:1},
- {q:"Which ocean is the largest?",a:["Atlantic","Indian","Pacific","Arctic"],c:2}
-],
-most:[
- "Who is most likely to become famous?",
- "Who is most likely to reply after 3 business days?",
- "Who is most likely to survive a zombie apocalypse?",
- "Who is most likely to become a billionaire?"
-],
-wyr:[
- {q:"Would you rather always be 10 minutes late or 20 minutes early?",a:"Always 10 minutes late",b:"Always 20 minutes early"},
- {q:"Would you rather have unlimited money or unlimited free time?",a:"Unlimited money",b:"Unlimited free time"},
- {q:"Would you rather read minds or see the future?",a:"Read minds",b:"See the future"}
-]};
-
-function $(id){return document.getElementById(id)}
-function show(id){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));$(id).classList.add("active")}
-function msg(t){$("homeMsg").textContent=t}
-function makeCode(){return Math.random().toString(36).slice(2,8).toUpperCase()}
-function clean(s){return String(s||"").trim().slice(0,18)}
-
-signInAnonymously(auth).catch(e=>msg("Firebase Auth error: "+e.message));
-onAuthStateChanged(auth,u=>{uid=u?.uid||null});
-
-async function createRoom(){
- const n=clean($("createName").value); if(!n)return msg("Enter your nickname.");
- if(!uid)return msg("Connecting… try again in a moment.");
- room=makeCode();myName=n;isHost=true;
- await set(ref(db,"rooms/"+room),{host:uid,game:null,round:0,status:"lobby",players:{[uid]:{name:n,score:0}}});
- listen();show("lobby");
+<script>
+const qs=[
+"Would you rather have unlimited pizza 🍕 or unlimited sleep 😴?",
+"Would you rather read minds 🧠 or become invisible 👻?",
+"Would you rather travel to the future 🚀 or the past ⏳?",
+"Would you rather have a personal chef 👨‍🍳 or personal driver 🚗?"
+];
+const truths=["What is the funniest thing you've done this month? 😂","What's one thing that instantly makes you happy? 💜","What is your most useless talent? 😭","Who would survive longest in a zombie apocalypse?"];
+const movies=["🦁👑","❄️👸","🕷️🧑","🚢💔","🐼🥋"];
+function game(type){
+let t="";
+if(type==="truth") t="🎯 Truth time:<br><br>"+truths[Math.floor(Math.random()*truths.length)];
+if(type==="wyr") t="🤔 Choose carefully:<br><br>"+qs[Math.floor(Math.random()*qs.length)];
+if(type==="number"){let n=Math.floor(Math.random()*20)+1;t="🔢 I picked a number from 1–20.<br><br>Guess it and send me your answer. 😈<br><br><b>Hint:</b> "+(n%2?"It's odd 😉":"It's even 😏");}
+if(type==="movie") t="🎬 Guess this movie:<br><br><span style='font-size:45px'>"+movies[Math.floor(Math.random()*movies.length)]+"</span>";
+if(type==="chaos") t=["🚨 Your official diagnosis: 100% too cool for hospital boredom.","😂 The boredom monster has been defeated. For approximately 7 seconds.","🧸 A bear has been dispatched to your hospital room.","📢 BREAKING NEWS: Siddhi is still awesome.","🍟 Doctor's orders: one imaginary french fry."][Math.floor(Math.random()*5)];
+show(t);
 }
-async function joinRoom(){
- const n=clean($("joinName").value), code=$("roomInput").value.trim().toUpperCase();
- if(!n||code.length!==6)return msg("Enter nickname and a 6-character room code.");
- const snap=await get(ref(db,"rooms/"+code));
- if(!snap.exists())return msg("Room not found.");
- room=code;myName=n;isHost=false;
- await update(ref(db,"rooms/"+room+"/players/"+uid),{name:n,score:0});
- listen();show("lobby");
-}
-function listen(){
- if(unsubscribe)unsubscribe();
- unsubscribe=onValue(ref(db,"rooms/"+room),snap=>{
-  roomData=snap.val(); if(!roomData)return;
-  isHost=roomData.host===uid;
-  $("roomCode").textContent=room;
-  renderPlayers();
-  if(roomData.status==="lobby")show("lobby");
-  else if(roomData.status==="game")renderGame();
-  else if(roomData.status==="result")renderResult();
- });
-}
-function renderPlayers(){
- const ps=roomData.players||{}; $("players").innerHTML=Object.entries(ps).map(([id,p])=>
- `<span class="player ${id===roomData.host?"host":""}">${esc(p.name)}${id===roomData.host?" 👑":""} <b>${p.score||0}</b></span>`).join("");
- $("hostControls").classList.toggle("hidden",!isHost);
- $("waiting").classList.toggle("hidden",isHost);
- $("myScore").textContent=ps[uid]?.score||0;
-}
-function esc(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
-
-async function startGame(type){
- if(!isHost)return;
- const round=(roomData.round||0)+1;
- await update(ref(db,"rooms/"+room),{game:type,round,status:"game",answers:{},startedAt:Date.now()});
-}
-function renderGame(){
- const type=roomData.game; $("gameTitle").textContent={quiz:"🧠 Quiz Battle",most:"😂 Most Likely To",wyr:"🤔 Would You Rather",fast:"⚡ Fastest Finger"}[type];
- if(type==="quiz")renderQuiz(); else if(type==="most")renderMost(); else if(type==="wyr")renderWyr(); else renderFast();
-}
-function renderQuiz(){
- const q=games.quiz[(roomData.round-1)%games.quiz.length]; const mine=(roomData.answers||{})[uid];
- $("gameBody").innerHTML=`<h2>${q.q}</h2>${q.a.map((x,i)=>`<button class="option" ${mine!=null?"disabled":""} onclick="answer(${i})">${x}</button>`).join("")}<div class="notice">Answer once. The host can end the round.</div>`;
-}
-window.answer=async function(i){
- if((roomData.answers||{})[uid]!=null)return;
- const q=games.quiz[(roomData.round-1)%games.quiz.length];
- await update(ref(db,`rooms/${room}/answers`),{[uid]:i});
- if(i===q.c)await update(ref(db,`rooms/${room}/players/${uid}`),{score:(roomData.players[uid].score||0)+1});
-}
-function renderMost(){
- const q=games.most[(roomData.round-1)%games.most.length], mine=(roomData.answers||{})[uid];
- const ps=roomData.players||{};
- $("gameBody").innerHTML=`<h2>${q}</h2><p class="muted">Pick a friend.</p>${Object.entries(ps).map(([id,p])=>`<button class="option" ${mine?"disabled":""} onclick="vote('${id}')">${esc(p.name)}</button>`).join("")}<div class="notice">Everyone votes. No self-voting.</div>`;
-}
-window.vote=async id=>{
- if(id===uid||(roomData.answers||{})[uid])return;
- await update(ref(db,`rooms/${room}/answers`),{[uid]:id});
-}
-function renderWyr(){
- const q=games.wyr[(roomData.round-1)%games.wyr.length], mine=(roomData.answers||{})[uid];
- $("gameBody").innerHTML=`<h2>${q.q}</h2><button class="option" ${mine?"disabled":""} onclick="vote('${btoa(q.a)}')">${q.a}</button><button class="option" ${mine?"disabled":""} onclick="vote('${btoa(q.b)}')">${q.b}</button>`;
-}
-function renderFast(){
- $("gameBody").innerHTML=`<h2>Tap when you see GO!</h2><div class="timer" id="fastText">WAIT…</div><button onclick="fastTap()" id="fastBtn" disabled>WAIT</button>`;
- if(isHost)setTimeout(async()=>{await update(ref(db,`rooms/${room}`),{fastGoAt:Date.now()+2500})},800);
- setTimeout(()=>{if(roomData.fastGoAt){$("fastText").textContent="GO!";$("fastBtn").disabled=false}},2500);
-}
-window.fastTap=async()=>{if((roomData.answers||{})[uid])return;await update(ref(db,`rooms/${room}/answers`),{[uid]:Date.now()})}
-
-window.backLobby=async()=>{if(isHost)await update(ref(db,`rooms/${room}`),{status:"lobby",game:null,answers:null,fastGoAt:null});else show("lobby")};
-function renderResult(){
- const ps=Object.values(roomData.players||{}).sort((a,b)=>(b.score||0)-(a.score||0));
- $("resultBody").innerHTML=ps.map((p,i)=>`<div class="notice">${i+1}. <b>${esc(p.name)}</b> — ${p.score||0} pts</div>`).join("");
-}
-window.copyCode=()=>navigator.clipboard?.writeText(room).then(()=>alert("Room code copied!"));
+function openLetter(x){
+let a={bored:"If you're bored: send me the first 3 emojis in your keyboard and I'll make a story from them 😂",sad:"Hey. You don't have to be cheerful all the time. Rest, breathe, and remember you're not alone. 💜",miss:"Consider this a virtual hug 🫂. Now stop being dramatic and smile for 5 seconds.",mot:"Tiny steps count. Today doesn't have to be perfect. Just get through today. You're doing better than you think. 🌸",sleep:"Phone down. Eyes closed. No arguing. 😴 Goodnight, sleepyhead 💜"};show(a[x]);}
+function surprise(){game(["truth","wyr","chaos","movie"][Math.floor(Math.random()*4)])}
+function spam(){let arr=["HEY HEY HEY 😂","BOREDOM ALERT 🚨","💜💜💜💜💜","GO DRINK WATER 😤","🧸 VIRTUAL HUG ATTACK 🫂","SIDDHI!!! 👀","😂😂😂😂😂"];show(arr[Math.floor(Math.random()*arr.length)]);}
+function show(t){document.getElementById("modalText").innerHTML=t;document.getElementById("modal").style.display="flex"}
+function closeModal(){document.getElementById("modal").style.display="none"}
+function toast(t){show(t)}
 </script>
 </body>
 </html>
