@@ -1,92 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Siddhi 💜</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SkillSwap AI — Learn. Teach. Connect.</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#faf5ff,#fff1f7);color:#26324a}
-.app{min-height:100vh}.top{padding:18px 20px;background:#fff8ff;border-bottom:1px solid #eadcff;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5}.logo{font-size:25px;font-weight:800;color:#7139d8}.music{background:#fff;border:1px solid #dec8ff;padding:10px 14px;border-radius:15px;font-size:13px}
-.wrap{display:flex;max-width:1200px;margin:auto}.side{width:210px;padding:20px 14px;border-right:1px solid #eadcff;min-height:calc(100vh - 70px)}.nav{padding:12px;border-radius:12px;margin:5px 0;cursor:pointer}.nav:hover,.nav.active{background:#f0e4ff;color:#7035d3;font-weight:bold}
-main{flex:1;padding:25px}.hero{background:white;border:1px solid #eadcff;border-radius:24px;padding:28px;display:flex;justify-content:space-between;gap:20px;box-shadow:0 10px 30px #7b45b31a}.hero h1{font-size:36px;margin:8px 0;color:#26324a}.hero p{color:#667085;line-height:1.6}.bear{font-size:100px;align-self:center}.btn{border:0;border-radius:13px;padding:12px 18px;background:#7639dc;color:white;font-weight:bold;cursor:pointer}.btn:active{transform:scale(.97)}
-.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px}.card{background:white;border:1px solid #eadcff;border-radius:18px;padding:18px;text-align:center;min-height:150px}.emoji{font-size:35px}.card h3{font-size:15px;margin:8px 0}.small{font-size:12px;color:#7b8498}.play{margin-top:10px;border:0;border-radius:10px;padding:8px 14px;color:white;background:#8b4de2;cursor:pointer}
-.section{margin-top:22px}.section h2{font-size:20px}.letters{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.letter{padding:22px 10px;border-radius:18px;text-align:center;background:#fff;border:1px solid #efd7e8;cursor:pointer}.letter:hover{transform:translateY(-3px)}
-.kit{display:flex;gap:10px;flex-wrap:wrap}.pill{background:#fff;padding:13px 16px;border-radius:16px;border:1px solid #dcefe6;cursor:pointer}.spam{background:#fff5d9;border:1px solid #f4dc94;padding:20px;border-radius:18px;margin-top:18px;text-align:center}.message{margin-top:18px;background:#f5efff;border-radius:18px;padding:18px;display:none}
-.modal{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;padding:20px;z-index:20}.box{background:white;border-radius:22px;padding:25px;max-width:430px;width:100%;text-align:center}.close{float:right;border:0;background:#eee;border-radius:50%;width:30px;height:30px}
-@media(max-width:850px){.side{display:none}.grid{grid-template-columns:repeat(2,1fr)}.letters{grid-template-columns:repeat(2,1fr)}main{padding:15px}.hero h1{font-size:28px}.bear{font-size:65px}.music{display:none}}
+:root{
+ --bg:#080b18;--bg2:#10162b;--card:rgba(19,25,48,.78);--card2:#151d3a;
+ --text:#f5f7ff;--muted:#a8b1ce;--line:rgba(255,255,255,.10);
+ --p:#7c5cff;--p2:#00d9ff;--pink:#ff4fd8;--green:#36e29b;--yellow:#ffd166;
+ --shadow:0 20px 60px rgba(0,0,0,.35)
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--text);
+background:radial-gradient(circle at 10% 0%,#30206b 0,transparent 32%),radial-gradient(circle at 90% 10%,#064b62 0,transparent 30%),linear-gradient(135deg,var(--bg),var(--bg2));min-height:100vh}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:45px 45px;mask-image:linear-gradient(to bottom,#000,transparent 75%)}
+.nav{position:sticky;top:0;z-index:20;background:rgba(8,11,24,.72);backdrop-filter:blur(22px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px;padding:12px max(12px,calc((100% - 1180px)/2))}
+.logo{font-size:24px;font-weight:950;letter-spacing:-1px;margin-right:auto;background:linear-gradient(90deg,var(--p2),var(--pink));-webkit-background-clip:text;color:transparent}
+.nav button{border:0;background:transparent;color:#dce2fa;padding:10px 11px;border-radius:10px}.nav button:hover{background:rgba(255,255,255,.07)}
+.nav .primary{background:linear-gradient(90deg,var(--p),var(--pink));color:white!important;box-shadow:0 8px 25px #7c5cff55}
+.container{max-width:1180px;margin:auto;padding:28px 18px;position:relative;z-index:1}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center;padding:58px 0 40px}
+.badge{display:inline-flex;gap:8px;align-items:center;border:1px solid #ffffff18;background:#ffffff09;border-radius:999px;padding:8px 12px;color:#dbe1ff;font-size:13px;font-weight:800}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 15px var(--green)}
+.hero h1{font-size:clamp(46px,7vw,82px);line-height:.93;letter-spacing:-4px;margin:20px 0}
+.gradient{background:linear-gradient(90deg,#fff,var(--p2),var(--pink));-webkit-background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:18px;line-height:1.7;max-width:650px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:12px;padding:12px 17px;color:white;font-weight:850;background:linear-gradient(90deg,var(--p),#9b5cff);box-shadow:0 10px 25px #7c5cff2e}.btn.secondary{background:#ffffff0c;border:1px solid var(--line);box-shadow:none}.btn.green{background:linear-gradient(90deg,#15b979,var(--green));}.btn.red{background:#ff4d6d22;color:#ff9bad;border:1px solid #ff4d6d33;box-shadow:none}
+.card{background:linear-gradient(145deg,rgba(22,29,57,.86),rgba(12,17,36,.75));border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:var(--shadow);backdrop-filter:blur(18px)}
+.hero-card{position:relative;overflow:hidden}.hero-card:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;right:-50px;top:-60px;background:#00d9ff20;filter:blur(5px)}
+.step{display:flex;gap:13px;align-items:center;padding:12px;border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}
+.num{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,var(--p),var(--pink));font-weight:950}
+.title{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:30px 0 15px}.title h2{margin:0;font-size:28px}.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.skill{display:inline-block;padding:7px 10px;border-radius:999px;background:#ffffff0b;border:1px solid #ffffff12;color:#cfd7ff;font-size:12px;font-weight:800;margin:3px}
+.person{display:flex;gap:12px;align-items:center}.avatar{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,var(--p),var(--p2));font-weight:950;box-shadow:0 10px 25px #7c5cff35}
+.stars{color:var(--yellow)}
+.search{display:flex;gap:10px;margin-bottom:16px}.search input,.field input,.field select,.field textarea,.compose input{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;background:#080d1d;color:var(--text);outline:none}.search input:focus,.field input:focus{border-color:#8b79ff;box-shadow:0 0 0 3px #7c5cff18}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{text-align:center}.stat b{display:block;font-size:30px;background:linear-gradient(90deg,var(--p2),var(--pink));-webkit-background-clip:text;color:transparent}
+.progress{height:9px;background:#ffffff0b;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--p),var(--p2),var(--pink));border-radius:99px}
+.field{margin:13px 0}.field label{display:block;font-size:12px;font-weight:900;margin-bottom:7px;color:#cbd3f1}
+.modalbg{position:fixed;inset:0;background:#02040cbf;z-index:50;display:none;align-items:center;justify-content:center;padding:15px;backdrop-filter:blur(9px)}.modal{width:min(560px,100%);max-height:90vh;overflow:auto;background:#11172d;border:1px solid var(--line);border-radius:22px;padding:23px;box-shadow:0 30px 100px #0009}.mh{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:#ffffff0b;color:white;border-radius:50%;width:34px;height:34px}
+.notice{padding:13px;border-radius:13px;background:#00d9ff0c;border:1px solid #00d9ff22;color:#bdefff;margin:12px 0}
+.chat{display:grid;grid-template-columns:255px 1fr;min-height:590px;overflow:hidden;padding:0}.chatlist{border-right:1px solid var(--line);padding:14px}.chatmain{display:flex;flex-direction:column}.chathead{padding:16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}.messages{flex:1;padding:20px;overflow:auto;background:radial-gradient(circle at 70% 10%,#7c5cff0d,transparent 30%)}
+.bubble{max-width:75%;background:#ffffff0b;border:1px solid #ffffff0c;padding:11px 14px;border-radius:16px;margin:9px 0;line-height:1.45}.bubble.me{margin-left:auto;background:linear-gradient(135deg,#6c5ce733,#ff4fd811);border-color:#9b7cff22}.aiTag{font-size:10px;color:var(--p2);font-weight:900;margin-bottom:4px}
+.compose{display:flex;gap:8px;padding:13px;border-top:1px solid var(--line)}.compose input{flex:1}.ai-mode{display:flex;gap:7px;align-items:center;font-size:12px;color:var(--muted)}
+.leader{display:flex;gap:12px;align-items:center;padding:14px;border-bottom:1px solid var(--line)}.rank{width:35px;font-weight:950;font-size:21px}.xp{margin-left:auto;color:var(--p2);font-weight:950}
+.empty{text-align:center;padding:40px;color:var(--muted)}footer{text-align:center;color:#7f89a9;padding:40px 20px}
+@media(max-width:850px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.nav{overflow:auto}.nav button{white-space:nowrap;font-size:12px}}
+@media(max-width:570px){.grid{grid-template-columns:1fr}.chat{grid-template-columns:1fr}.chatlist{border-right:0;border-bottom:1px solid var(--line);display:flex;overflow:auto;gap:7px}.chatlist button{min-width:145px}.hero{padding:28px 0}.nav{padding:9px 6px}.logo{font-size:20px}.hero h1{letter-spacing:-2px}}
 </style>
 </head>
 <body>
-<div class="app">
-<header class="top"><div class="logo">For Siddhi 💜</div><div class="music">🎵 Good Days &nbsp; • &nbsp; ♫</div></header>
-<div class="wrap">
-<aside class="side">
-<div class="nav active">🏠 Home</div><div class="nav">🎮 Games</div><div class="nav">❓ Quizzes</div><div class="nav">💌 Messages</div><div class="nav">🎵 Playlist</div><div class="nav">🧸 Virtual Kit</div><div class="nav">🎨 Draw Together</div><div class="nav">💜 Our Moments</div>
-</aside>
-<main>
-<section class="hero">
-<div><div style="color:#7b3fd2;font-weight:bold">Hey Siddhi! 🌸</div><h1>You're stronger<br>than you think.</h1><p>This is your tiny internet corner for whenever the hospital gets boring. 😌<br>Play something, open a surprise, or just press the chaos button.</p><button class="btn" onclick="surprise()">✨ Give Me A Surprise</button></div><div class="bear">🧸💗</div>
-</section>
-
-<div class="section"><h2>🎮 Let's Beat Boredom</h2>
-<div class="grid">
-<div class="card"><div class="emoji">🎯</div><h3>Truth or Dare</h3><div class="small">Fun questions</div><button class="play" onclick="game('truth')">Play</button></div>
-<div class="card"><div class="emoji">🤔</div><h3>Would You Rather</h3><div class="small">Impossible choices</div><button class="play" onclick="game('wyr')">Play</button></div>
-<div class="card"><div class="emoji">🔢</div><h3>Guess My Number</h3><div class="small">1–20 challenge</div><button class="play" onclick="game('number')">Play</button></div>
-<div class="card"><div class="emoji">🎬</div><h3>Movie Emoji</h3><div class="small">Guess the movie</div><button class="play" onclick="game('movie')">Play</button></div>
-<div class="card"><div class="emoji">😂</div><h3>Random Chaos</h3><div class="small">Zero seriousness</div><button class="play" onclick="game('chaos')">Play</button></div>
-</div></div>
-
-<div class="section"><h2>💌 Open When You're...</h2>
-<div class="letters">
-<div class="letter" onclick="openLetter('bored')">💜<br><b>Feeling Bored</b></div>
-<div class="letter" onclick="openLetter('sad')">💗<br><b>Feeling Sad</b></div>
-<div class="letter" onclick="openLetter('miss')">💙<br><b>Missing Us</b></div>
-<div class="letter" onclick="openLetter('mot')">💛<br><b>Need Motivation</b></div>
-<div class="letter" onclick="openLetter('sleep')">💚<br><b>Feeling Sleepy</b></div>
-</div></div>
-
-<div class="section"><h2>🧸 Virtual Hospital Survival Kit</h2>
-<div class="kit">
-<div class="pill" onclick="toast('✨ Good vibes delivered!')">⭐ Good Vibes</div>
-<div class="pill" onclick="toast('😂 Laughter dose: 100%')">😂 Laughter</div>
-<div class="pill" onclick="toast('❤️ Healing energy sent!')">❤️ Healing</div>
-<div class="pill" onclick="toast('🫂 Bestie support activated!')">🫂 Bestie Support</div>
-<div class="pill" onclick="toast('🍩 Imaginary snack incoming!')">🍩 Yummy Thoughts</div>
-<div class="pill" onclick="toast('🧸 Virtual hug sent!')">🧸 Hugs</div>
-</div></div>
-
-<div class="spam"><b>😂 Emergency Boredom Button</b><br><span class="small">Press only if you're ready for nonsense.</span><br><button class="btn" style="margin-top:10px;background:#f2a900" onclick="spam()">🚨 SPAM ME!</button></div>
-<div id="message" class="message"></div>
-</main></div></div>
-
-<div class="modal" id="modal"><div class="box"><button class="close" onclick="closeModal()">×</button><div id="modalText" style="padding:20px 5px;font-size:18px;line-height:1.5"></div></div></div>
-
+<nav class="nav">
+<div class="logo">SkillSwap AI</div>
+<button onclick="page('home')">Home</button><button onclick="page('explore')">Explore</button><button onclick="page('match')">Find Match</button><button onclick="page('chat')">Chat</button><button onclick="page('dashboard')">Dashboard</button><button onclick="page('leaderboard')">Leaderboard</button><button class="primary" onclick="auth()">Sign Up</button>
+</nav>
+<main id="app" class="container"></main>
+<footer>SkillSwap AI • Learn from AI first, then connect with real people • Competition Demo</footer>
+<div id="modalbg" class="modalbg"><div id="modal" class="modal"></div></div>
+<div id="toast" style="position:fixed;right:16px;bottom:16px;background:#171d36;border:1px solid #ffffff18;color:white;padding:13px 17px;border-radius:13px;display:none;z-index:100;box-shadow:0 15px 40px #0007"></div>
 <script>
-const qs=[
-"Would you rather have unlimited pizza 🍕 or unlimited sleep 😴?",
-"Would you rather read minds 🧠 or become invisible 👻?",
-"Would you rather travel to the future 🚀 or the past ⏳?",
-"Would you rather have a personal chef 👨‍🍳 or personal driver 🚗?"
-];
-const truths=["What is the funniest thing you've done this month? 😂","What's one thing that instantly makes you happy? 💜","What is your most useless talent? 😭","Who would survive longest in a zombie apocalypse?"];
-const movies=["🦁👑","❄️👸","🕷️🧑","🚢💔","🐼🥋"];
-function game(type){
-let t="";
-if(type==="truth") t="🎯 Truth time:<br><br>"+truths[Math.floor(Math.random()*truths.length)];
-if(type==="wyr") t="🤔 Choose carefully:<br><br>"+qs[Math.floor(Math.random()*qs.length)];
-if(type==="number"){let n=Math.floor(Math.random()*20)+1;t="🔢 I picked a number from 1–20.<br><br>Guess it and send me your answer. 😈<br><br><b>Hint:</b> "+(n%2?"It's odd 😉":"It's even 😏");}
-if(type==="movie") t="🎬 Guess this movie:<br><br><span style='font-size:45px'>"+movies[Math.floor(Math.random()*movies.length)]+"</span>";
-if(type==="chaos") t=["🚨 Your official diagnosis: 100% too cool for hospital boredom.","😂 The boredom monster has been defeated. For approximately 7 seconds.","🧸 A bear has been dispatched to your hospital room.","📢 BREAKING NEWS: Siddhi is still awesome.","🍟 Doctor's orders: one imaginary french fry."][Math.floor(Math.random()*5)];
-show(t);
-}
-function openLetter(x){
-let a={bored:"If you're bored: send me the first 3 emojis in your keyboard and I'll make a story from them 😂",sad:"Hey. You don't have to be cheerful all the time. Rest, breathe, and remember you're not alone. 💜",miss:"Consider this a virtual hug 🫂. Now stop being dramatic and smile for 5 seconds.",mot:"Tiny steps count. Today doesn't have to be perfect. Just get through today. You're doing better than you think. 🌸",sleep:"Phone down. Eyes closed. No arguing. 😴 Goodnight, sleepyhead 💜"};show(a[x]);}
-function surprise(){game(["truth","wyr","chaos","movie"][Math.floor(Math.random()*4)])}
-function spam(){let arr=["HEY HEY HEY 😂","BOREDOM ALERT 🚨","💜💜💜💜💜","GO DRINK WATER 😤","🧸 VIRTUAL HUG ATTACK 🫂","SIDDHI!!! 👀","😂😂😂😂😂"];show(arr[Math.floor(Math.random()*arr.length)]);}
-function show(t){document.getElementById("modalText").innerHTML=t;document.getElementById("modal").style.display="flex"}
-function closeModal(){document.getElementById("modal").style.display="none"}
-function toast(t){show(t)}
-</script>
-</body>
-</html>
+const K="skillswap_ai_v2";
+const seed={user:null,xp:0,requests:["Aarav Sharma"],connections:["Ananya Mehta"],sessions:[],ratings:[],messages:{"Ananya Mehta":[{me:false,text:"Hey! I can help you with UI Design."},{me:true,text:"Great! I want to learn UI Design."}]},people:[
+{name:"Ananya Mehta",role:"UI Designer",teach:["Figma","UI Design","Graphic Design"],learn:["Python"],rating:4.8},
+{name:"Kabir Singh",role:"Python Developer",teach:["Python","AI"],learn:["Graphic Design"],rating:4.7},
+{name:"Meera Joshi",role:"Photographer",teach:["Photography","Lightroom"],learn:["Video Editing"],rating:4.9},
+{name:"Rohan Patel",role:"Video Creator",teach:["Video Editing","Premiere Pro"],learn:["Web Development"],rating:5},
+{name:"Ishita Rao",role:"Language Tutor",teach:["English","Spanish"],learn:["Photography"],rating:4.9},
+{name:"Aarav Sharma",role:"Web Developer",teach:["JavaScript","React","HTML"],learn:["Photography"],rating:4.9}]};
+let S=JSON.parse(localStorage.getItem(K)||"null")||seed;
+function save(){localStorage.setItem(K,JSON.stringify(S))}
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function toast(t){let x=document.getElementById("toast");x.textContent=t;x.style.display="block";clearTimeout(window.tm);window.tm=setTimeout(()=>x.style.display="none",2300)}
+function close(){document.getElementById("modalbg").style.display="none"}
+function modal(c){document.getElementById("modal").innerHTML=c;document.getElementById("modalbg").style.display="flex"}
+document.getElementById("modalbg").onclick=e=>{if(e.target.id==="modalbg")close()}
+function auth(){modal(`<div class="mh"><h2>Join SkillSwap AI</h2><button class="close" onclick="close()">×</button></div><p class="muted">Create your learner profile and start your skill journey.</p><div class="field"><label>Name</label><input id="an" placeholder="Your name"></div><div class="field"><label>Email</label><input id="ae" type="email" placeholder="you@example.com"></div><div class="field"><label>Password</label><input id="ap" type="password" placeholder="Password"></div><div class="actions"><button class="btn" onclick="signup()">Create Account</button><button class="btn secondary" onclick="demo()">Try Demo Account</button></div>`)}
+function signup(){let n=an.value.trim(),e=ae.value.trim(),p=ap.value;if(!n||!e||!p)return toast("Fill all fields");S.user={name:n,email:e,role:"Student • Skill Explorer",teach:[],learn:[],rating:0};S.xp=50;save();close();toast("Account created! +50 XP");profile()}
+function demo(){S.user={name:"Hritik Demo",role:"Student • Skill Explorer",teach:["Python","Web Development"],learn:["UI Design","Photography"],rating:5};S.xp=145;save();close();toast("Demo account activated");page("dashboard")}
+function need(){if(!S.user){auth();toast("Create your account first");return false}return true}
+function profile(){modal(`<div class="mh"><h2>Create Profile</h2><button class="close" onclick="close()">×</button></div><div class="field"><label>Name</label><input id="pn" value="${esc(S.user?.name||"")}"></div><div class="field"><label>Role / Bio</label><input id="pr" value="${esc(S.user?.role||"Student")}"></div><div class="field"><label>I can teach</label><input id="pt" value="${esc((S.user?.teach||[]).join(", "))}" placeholder="Python, Maths"></div><div class="field"><label>I want to learn</label><input id="pl" value="${esc((S.user?.learn||[]).join(", "))}" placeholder="UI Design, Photography"></div><button class="btn" onclick="saveProfile()">Save Profile</button>`)}
+function saveProfile(){if(!pn.value.trim())return toast("Name required");S.user.name=pn.value.trim();S.user.role=pr.value.trim()||"Skill Explorer";S.user.teach=pt.value.split(",").map(x=>x.trim()).filter(Boolean);S.user.learn=pl.value.split(",").map(x=>x.trim()).filter(Boolean);S.xp+=20;save();close();toast("Profile saved! +20 XP");page("dashboard")}
+function addSkill(){modal(`<div class="mh"><h2>Add Skill</h2><button class="close" onclick="close()">×</button></div><div class="field"><label>Skill</label><input id="sn" placeholder="e.g. Python"></div><div class="field"><label>Type</label><select id="st"><option>Teach</option><option>Learn</option></select></div><button class="btn" onclick="saveSkill()">Add Skill</button>`)}
+function saveSkill(){let n=sn.value.trim();if(!n)return toast("Enter a skill");let k=st.value==="Teach"?"teach":"learn";if(!S.user[k].some(x=>x.toLowerCase()===n.toLowerCase()))S.user[k].push(n);S.xp+=10;save();close();toast("Skill added! +10 XP");page("dashboard")}
+function send(name){if(!need())return;if(S.connections.includes(name))return toast("Already connected");if(S.requests.includes(name))return toast("Request already sent");S.requests.push(name);S.xp+=5;save();toast("Request sent! +5 XP");page("explore")}
+function accept(name){S.requests=S.requests.filter(x=>x!==name);if(!S.connections.includes(name))S.connections.push(name);S.xp+=15;save();toast("Request accepted! +15 XP");page("dashboard")}
+function reject(name){S.requests=S.requests.filter(x=>x!==name);save();toast("Request declined");page("dashboard")}
+function schedule(name){modal(`<div class="mh"><h2>Schedule Session</h2><button class="close" onclick="close()">×</button></div><p>With <b>${esc(name)}</b></p><div class="field"><label>Skill</label><input id="ss" value="${esc(S.user?.learn?.[0]||S.user?.teach?.[0]||"Skill Exchange")}"></div><div class="field"><label>Date</label><input id="sd" type="date"></div><div class="field"><label>Time</label><input id="stt" type="time"></div><button class="btn" onclick="saveSession('${esc(name)}')">Schedule Session</button>`)}
+function saveSession(name){if(!sd.value||!stt.value)return toast("Choose date and time");S.sessions.push({id:Date.now(),name,skill:ss.value||"Skill Exchange",date:sd.value,time:stt.value,status:"scheduled",rated:false});S.xp+=10;save();close();toast("Session scheduled! +10 XP");page("dashboard")}
+function complete(id){let x=S.sessions.find(a=>a.id===id);if(!x)return;x.status="completed";S.xp+=30;save();toast("Session completed! +30 XP");page("dashboard")}
+function rate(id,name){modal(`<div class="mh"><h2>Give Rating</h2><button class="close" onclick="close()">×</button></div><p>Rate your session with <b>${esc(name)}</b>.</p><div class="field"><label>Rating</label><select id="rr"><option value="5">★★★★★ Excellent</option><option value="4">★★★★☆ Great</option><option value="3">★★★☆☆ Good</option><option value="2">★★☆☆☆ Okay</option><option value="1">★☆☆☆☆ Poor</option></select></div><div class="field"><label>Review</label><textarea id="rv" rows="3" placeholder="Write a review..."></textarea></div><button class="btn" onclick="saveRating(${id},'${esc(name)}')">Submit Rating</button>`)}
+function saveRating(id,name){let x=S.sessions.find(a=>a.id===id);if(x)x.rated=true;S.ratings.push({name,rating:+rr.value,review:rv.value});S.xp+=25;save();close();toast("Rating submitted! +25 XP");page("dashboard")}
+function page(p){({home,explore,match,chat,dashboard,leaderboard}[p]||home)();scrollTo(0,0)}
+function home(){document.getElementById("app").innerHTML=`<section class="hero"><div><span class="badge"><i class="dot"></i> AI-powered skill exchange</span><h1>Learn smarter.<br><span class="gradient">Connect better.</span></h1><p>Start with an AI learning partner for instant help and smart replies. Then find real people with matching skills, chat, schedule sessions and earn XP.</p><div class="actions"><button class="btn" onclick="auth()">Start Swapping →</button><button class="btn secondary" onclick="page('chat')">Try AI Chat</button></div></div><div class="card hero-card"><h2>Your Skill Journey</h2>${["Sign Up","Create Profile","Add Skills","AI + Human Match","Send Request","Accept & Chat","Schedule Session","Complete + Rate","Earn XP","Leaderboard"].map((x,i)=>`<div class="step"><span class="num">${i+1}</span><b>${x}</b></div>`).join("")}</div></section><div class="title"><h2>Popular Skills</h2><button class="btn secondary" onclick="page('explore')">Explore all</button></div><div class="grid">${["Web Development","Python","UI Design","Photography","Video Editing","English"].map(x=>`<div class="card"><span class="skill">${x}</span><h3>Learn ${x}</h3><p class="muted">Find an expert or ask the AI coach for instant guidance.</p><button class="btn secondary" onclick="learn('${esc(x)}')">I want to learn</button></div>`).join("")}</div>`}
+function learn(x){if(!need())return;if(!S.user.learn.includes(x))S.user.learn.push(x);S.xp+=5;save();toast("Learning goal added! +5 XP");page("match")}
+function explore(){document.getElementById("app").innerHTML=`<div class="title"><div><h2>Explore People</h2><p class="muted">Discover humans who can teach what you want to learn.</p></div></div><div class="search"><input id="q" placeholder="Search people or skills..." oninput="filter()"></div><div class="grid" id="people">${cards(S.people)}</div>`}
+function filter(){let q=document.getElementById("q").value.toLowerCase(),a=S.people.filter(p=>(p.name+" "+p.role+" "+p.teach.join(" ")+" "+p.learn.join(" ")).toLowerCase().includes(q));document.getElementById("people").innerHTML=a.length?cards(a):'<div class="empty">No people found.</div>'}
+function cards(a){return a.map(p=>`<div class="card"><div class="person"><div class="avatar">${p.name[0]}</div><div><b>${esc(p.name)}</b><div class="muted">${esc(p.role)}</div></div></div><p><span class="stars">★ ${p.rating}</span></p><small class="muted">TEACH</small><br>${p.teach.map(x=>`<span class="skill">${esc(x)}</span>`).join("")}<p><small class="muted">WANTS TO LEARN</small><br>${p.learn.map(x=>`<span class="skill">${esc(x)}</span>`).join("")}</p><div class="actions"><button class="btn" onclick="send('${esc(p.name)}')">${S.connections.includes(p.name)?"Connected":S.requests.includes(p.name)?"Request Sent":"Send Request"}</button>${S.connections.includes(p.name)?`<button class="btn secondary" onclick="openHumanChat('${esc(p.name)}')">Chat</button>`:""}</div></div>`).join("")}
+function match(){document.getElementById("app").innerHTML=`<div class="title"><div><h2>Find Your Match</h2><p class="muted">AI compares teaching and learning goals to find a two-way skill swap.</p></div></div><div class="card"><div class="field"><label>I CAN TEACH</label><input id="mt" value="${esc(S.user?.teach?.join(", ")||"")}" placeholder="Python, Web Development"></div><div class="field"><label>I WANT TO LEARN</label><input id="ml" value="${esc(S.user?.learn?.join(", ")||"")}" placeholder="UI Design, Photography"></div><button class="btn" onclick="findMatches()">✨ Find Smart Matches</button></div><div id="matches" class="grid" style="margin-top:18px"></div>`}
+function findMatches(){if(!need())return;let t=mt.value.split(",").map(x=>x.trim()).filter(Boolean),l=ml.value.split(",").map(x=>x.trim()).filter(Boolean);S.user.teach=t;S.user.learn=l;let a=S.people.map(p=>{let a=p.teach.filter(x=>l.some(y=>x.toLowerCase()===y.toLowerCase())).length,b=p.learn.filter(x=>t.some(y=>x.toLowerCase()===y.toLowerCase())).length;return {...p,score:a+b}}).filter(x=>x.score).sort((a,b)=>b.score-a.score);S.xp+=10;save();document.getElementById("matches").innerHTML=a.length?`<div style="grid-column:1/-1"><h2>Best Matches ✨</h2></div>${cards(a)}`:`<div class="empty" style="grid-column:1/-1">No exact match yet. Try Python, UI Design, Photography or Web Development.</div>`;toast(`${a.length} smart match(es)! +10 XP`)}
+function aiReply(text){let t=text.toLowerCase();if(/hello|hi|hey|hii/.test(t))return"Hey! 👋 I’m your Ski
